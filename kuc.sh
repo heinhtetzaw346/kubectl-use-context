@@ -96,7 +96,7 @@ export KUBECONFIG=${config_dir}/${latest_config}" >> $HOME/.${current_shell}rc
 }
 
 select_config() {
-	local -a contexts=($(ls -tr $config_dir | sed 's/.yaml//' | sed s'/.yml//'))
+	local -a contexts=($(ls $config_dir | sed 's/.yaml//' | sed s'/.yml//'))
 	if ! [ "$#" -eq 0 ] && [[ "$1" =~ ^([0-9]{1,3})$ ]] && [[ "$1" -gt 0 ]] && [[ "$1" -le ${#contexts[@]} ]]; then
 		local option="$1"
 	else
